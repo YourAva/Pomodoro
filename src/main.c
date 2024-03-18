@@ -18,18 +18,18 @@ int Pomodoro(){
     int breaks = 0;
 
     while(turns !=4){
-        time = 1500;
+        time = 10;
         turns++;
         while(time > 0){
             sleep(1);
             time--;
             minutes = time / 60;
             seconds = time % 60;
-            printf("\r%02d:%02d -- \033[0;31mPomodoro %i\033[0m", minutes, seconds, turns);
+            printf("\r%02d:%02d -- \033[0;31mPomodoro %i     \033[0m", minutes, seconds, turns);
             fflush(stdout);
         }
-        if(breaks < 4){
-            time = 300;
+        if(breaks < 3){
+            time = 10;
             breaks++;
             while(time > 0){
                 sleep(1);
@@ -37,6 +37,7 @@ int Pomodoro(){
                 minutes = time / 60;
                 seconds = time % 60;
                 printf("\r%02d:%02d -- \033[0;32m5 Minute Break\033[0m", minutes, seconds);
+                fflush(stdout);
             }
         } else {
             time = 1200;
@@ -45,9 +46,10 @@ int Pomodoro(){
                 time--;
                 minutes = time / 60;
                 seconds = time % 60;
-                printf("\r%02d:%02d -- 20 Minute Break", minutes, seconds);
+                printf("\r%02d:%02d -- \033[0;32m20 Minute Break\033[0m", minutes, seconds);
+                fflush(stdout);
             }
         }
-    return 0;
     }
+    return 0;
 }
